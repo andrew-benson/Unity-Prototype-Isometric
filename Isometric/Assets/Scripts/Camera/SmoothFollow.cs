@@ -20,6 +20,13 @@ public class SmoothFollow : MonoBehaviour
     // Place the script in the Camera-Control group in the component menu
     [AddComponentMenu("Camera-Control/Smooth Follow")]
 
+    // Place the script in the Camera-Control group in the component menu
+    private void Start()
+    {
+        // Always look at the target
+        transform.LookAt(target);
+    }
+
     void LateUpdate()
     {
         // Early out if we don't have a target
@@ -30,21 +37,24 @@ public class SmoothFollow : MonoBehaviour
         float wantedDistance = transform.position.z - zDistance;
 
         float currentHeight = transform.position.y;
-        //float currentDistanceZ = transform.position.z;
-        //float currentDistanceZ = transform.position.z;
+        float currentDistanceZ = transform.position.z;
+        float currentDistanceX = transform.position.x;
 
         // Damp the height
         currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
-        //currentDistanceZ = Mathf.Lerp(currentDistanceZ, wantedDistance, heightDamping * Time.deltaTime);
+        currentDistanceZ = Mathf.Lerp(currentDistanceZ, target.position.z - zDistance, heightDamping * Time.deltaTime);
+        currentDistanceX = Mathf.Lerp(currentDistanceX, target.position.x, heightDamping * Time.deltaTime);
 
         // Set the position of the camera on the x-z plane to:
         // distance meters behind the target
         transform.position = target.position;
 
         // Set the height of the camera
-        transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z - zDistance);
+        transform.position = new Vector3(currentDistanceX, currentHeight, currentDistanceZ);
 
-        // Always look at the target
-        //transform.LookAt(target);
+
+
+        Debug.Log("damping " + heightDamping * Time.deltaTime);
+
     }
 }
