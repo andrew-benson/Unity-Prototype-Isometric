@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float PlayerSpeed = 5f;
 
-    float sideMovement, forwardMovement;
+    float _sideMovement, _forwardMovement;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,18 +13,31 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        var leftX = Input.GetAxis("Horizontal");
+        var leftY = Input.GetAxis("Vertical");
+        var rightX = Input.GetAxis("Mouse X");
+        var rightY = Input.GetAxis("Mouse Y");
 
-        sideMovement += PlayerSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
-        forwardMovement += PlayerSpeed * Time.deltaTime * Input.GetAxis("Vertical");
-        transform.position = new Vector3(sideMovement, transform.position.y, forwardMovement);
-        
+        // Movement - Left Analogue Stick
+        _sideMovement += PlayerSpeed * Time.deltaTime * leftX;
+        _forwardMovement += PlayerSpeed * Time.deltaTime * leftY;
+        var combinedMovementDirection = new Vector3(_sideMovement, transform.position.y, _forwardMovement);
 
-        Debug.Log("MOUSE X: " + Input.GetAxis("Mouse X"));
-        Debug.Log("MOUSE Y " + Input.GetAxis("Mouse Y"));
-
-        if(Input.GetAxis("Jump") > 0)
+        // Look rotation - Right Analogue Stick
+        if (rightX != 0 || rightY != 0)
         {
-            Debug.Log("Pressed Jump");
+            Vector3 lookDirection = new Vector3(rightX, 0, rightY);
+            transform.rotation = Quaternion.LookRotation(lookDirection);
         }
+        else
+        {
+            // Use the left stick to create look rotation
+            Vector3 lookDirection = new Vector3(leftX, 0, leftY);
+            transform.rotation = Quaternion.LookRotation(lookDirection);
+        }
+
+
+        // Assign the position
+        transform.position = combinedMovementDirection;
     }
 }
