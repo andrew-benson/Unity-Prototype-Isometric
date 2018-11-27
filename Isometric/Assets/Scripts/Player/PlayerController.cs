@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public float PlayerSpeed = 5f;
-    public static Rigidbody playerRigidbody; 
+    public static Rigidbody playerRigidbody;
+    public float gravity = -7;
 
     float _sideMovement, _forwardMovement;
     Vector3 combinedMovementDirection;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-
+       
     }
 
     private void FixedUpdate()
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour {
         Vector2 combine = new Vector2(combinedMovementDirection.x, combinedMovementDirection.z);
 
         if (combine != Vector2.zero)
-            playerRigidbody.velocity = new Vector3(combinedMovementDirection.x, 0, combinedMovementDirection.z);
+            playerRigidbody.velocity = new Vector3(combinedMovementDirection.x, playerRigidbody.velocity.y, combinedMovementDirection.z);
 
         //playerRigidbody.MovePosition(new Vector3(combinedMovementDirection.x, transform.position.y, combinedMovementDirection.z));
     }

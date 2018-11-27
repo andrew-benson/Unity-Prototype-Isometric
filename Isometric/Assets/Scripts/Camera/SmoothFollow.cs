@@ -35,8 +35,7 @@ public class SmoothFollow : MonoBehaviour
 
         transform.position = new Vector3(currentDistanceX, currentHeight, currentDistanceZ);
 
-        // Always look at the target
-        transform.LookAt(target);
+
     }
 
     void Update()
@@ -55,8 +54,8 @@ public class SmoothFollow : MonoBehaviour
 
         // Damp the height
         currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
-        currentDistanceZ = Mathf.Lerp(currentDistanceZ, target.position.z - zDistance, heightDamping * Time.deltaTime);
-        currentDistanceX = Mathf.Lerp(currentDistanceX, target.position.x - xDistance, heightDamping * Time.deltaTime);
+        currentDistanceZ = Mathf.Lerp(currentDistanceZ, target.position.z - zDistance, rotationDamping * Time.deltaTime);
+        currentDistanceX = Mathf.Lerp(currentDistanceX, target.position.x - xDistance, rotationDamping * Time.deltaTime);
 
         // Set the position of the camera on the x-z plane to:
         // distance meters behind the target
@@ -65,7 +64,8 @@ public class SmoothFollow : MonoBehaviour
         // Set the height of the camera
         transform.position = new Vector3(currentDistanceX, currentHeight, currentDistanceZ);
 
-
+        // Always look at the target
+        transform.LookAt(target);
 
         Debug.Log("damping " + (heightDamping * Time.deltaTime));
 

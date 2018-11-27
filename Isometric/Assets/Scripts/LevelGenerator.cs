@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour {
     {
         public Color c;
         public GameObject go;
+        public bool include;
     }
 
     public LevelGeneratorColourMatch[] coloursToGameObjects;
@@ -34,11 +35,11 @@ public class LevelGenerator : MonoBehaviour {
                 var pixelColour = levelImage.GetPixel(x, y);
 
 
-                if (pixelColour == Color.green)
-                {
-                    startTransform.position = new Vector3(x, groundY + 1, y);
-                    startTransform.parent = this.transform;
-                }
+                //if (pixelColour == Color.green)
+                //{
+                //    startTransform.position = new Vector3(x, groundY + 1, y);
+                //    startTransform.parent = this.transform;
+                //}
                     
 
 
@@ -56,15 +57,15 @@ public class LevelGenerator : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 45, 0);
 
 
-        // After the rotation
-        player.transform.position = startTransform.position;
+        startTransform.parent = null;
     }
 
     private void PopulateDictionary()
     {
         foreach (var colourMatch in coloursToGameObjects)
         {
-            colourToGameObjectDict.Add(colourMatch.c, colourMatch.go);
+            if(colourMatch.include == true)
+                colourToGameObjectDict.Add(colourMatch.c, colourMatch.go);
         }
     }
 
