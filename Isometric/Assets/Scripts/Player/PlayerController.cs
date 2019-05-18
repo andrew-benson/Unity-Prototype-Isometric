@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour {
     private Vector2 L_ThumbstickVector;
     private Vector2 R_ThumbstickVector;
 
+    private const string ANIM_PARAM_ISMOVINGLEFTSTICK = "isMovingLeftStick";
+    private const string ANIM_PARAM_ISMOVINGRIGHTSTICK = "isMovingRightStick";
+
 
     private void Awake()
     {
@@ -57,14 +60,16 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("L_BlendY", Math.Abs(leftY));
         animator.SetFloat("L_BlendX", Math.Abs(leftX));
 
-        
-
         if (L_ThumbstickVector != Vector2.zero)
         {
+            animator.SetBool(ANIM_PARAM_ISMOVINGLEFTSTICK, true);
+
             playerRigidbody.velocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed);
             playerVelocity = playerRigidbody.velocity.magnitude;
-            //Debug.Log(playerVelocity.magnitude);
         }
+        else
+            animator.SetBool(ANIM_PARAM_ISMOVINGLEFTSTICK, false);
+
     }
 
     private void RightThumbStick()
@@ -85,7 +90,14 @@ public class PlayerController : MonoBehaviour {
             Vector3 lookDirection = new Vector3(leftX, 0, leftY);
 
             if (lookDirection != Vector3.zero)
+            {
                 playerRigidbody.MoveRotation(Quaternion.LookRotation(lookDirection));
+            }        
         }
+
+        if(R_ThumbstickVector != Vector2.zero)
+            animator.SetBool(ANIM_PARAM_ISMOVINGRIGHTSTICK, true);
+        else        
+            animator.SetBool(ANIM_PARAM_ISMOVINGRIGHTSTICK, false);       
     }
 }

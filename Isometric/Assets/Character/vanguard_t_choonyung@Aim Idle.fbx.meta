@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d4e2000d4126b94ea11e6c7d89838d0
+guid: 704b166734f846241b439f2456696cb9
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
@@ -200,13 +200,7 @@ ModelImporter:
     second: mixamorig:Spine2
   - first:
       1: 100130
-    second: vanguard_Mesh
-  - first:
-      1: 100132
     second: //RootNode
-  - first:
-      1: 100134
-    second: vanguard_visor
   - first:
       4: 400000
     second: mixamorig:Head
@@ -404,37 +398,13 @@ ModelImporter:
     second: mixamorig:Spine2
   - first:
       4: 400130
-    second: vanguard_Mesh
-  - first:
-      4: 400132
     second: //RootNode
-  - first:
-      4: 400134
-    second: vanguard_visor
-  - first:
-      21: 2100000
-    second: Vanguard_VisorMat
-  - first:
-      21: 2100002
-    second: VanguardBodyMat
-  - first:
-      43: 4300000
-    second: vanguard_visor
-  - first:
-      43: 4300002
-    second: vanguard_Mesh
   - first:
       74: 7400000
     second: mixamo.com
   - first:
       95: 9500000
     second: //RootNode
-  - first:
-      137: 13700000
-    second: vanguard_Mesh
-  - first:
-      137: 13700002
-    second: vanguard_visor
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -464,18 +434,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Idle Aiming
       takeName: mixamo.com
       internalID: 7400000
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 63
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -527,10 +497,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 704b166734f846241b439f2456696cb9
-  - 67f28e46dee377d4f9ebd4d3e273b5bc
-  - d1b336df46e35934fba4b0570793b673
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67f28e46dee377d4f9ebd4d3e273b5bc
+guid: 52fbcb58f8ae3064a838b2623cddbc6e
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Rifle Idle
+      name: Walking Aim Backwards
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 257
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
