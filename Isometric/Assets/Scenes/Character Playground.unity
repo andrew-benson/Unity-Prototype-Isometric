@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -949,11 +949,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSpeed: 10
-  gravity: -300
+  gravity: -9
   animator: {fileID: 0}
-  xInput: 0
-  yInput: 0
-  playerVelocity: {x: 0, y: 0, z: 0}
+  leftX: 0
+  leftY: 0
+  playerVelocity: 0
   rightX: 0
   rightY: 0
 --- !u!4 &1472423997 stripped
