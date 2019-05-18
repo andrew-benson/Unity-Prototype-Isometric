@@ -4,6 +4,7 @@
 using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class SmoothFollow : MonoBehaviour
 {
 
@@ -66,8 +67,5 @@ public class SmoothFollow : MonoBehaviour
 
         // Always look at the target
         transform.LookAt(target);
-
-        Debug.Log("damping " + (heightDamping * Time.deltaTime));
-
     }
 }
