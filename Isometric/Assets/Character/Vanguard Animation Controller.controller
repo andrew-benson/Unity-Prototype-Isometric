@@ -157,7 +157,7 @@ BlendTree:
   m_Name: Back Run
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 5d12887b880fa0a4fbd36b4bfcb45a3d,
+    m_Motion: {fileID: -203655887218126122, guid: b5aa56cf3b15d604fae01eed955bf14a,
       type: 3}
     m_Threshold: -1
     m_Position: {x: 0, y: 0}
@@ -166,9 +166,9 @@ BlendTree:
     m_DirectBlendParameter: L_BlendY
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: b5aa56cf3b15d604fae01eed955bf14a,
+    m_Motion: {fileID: -203655887218126122, guid: 5d12887b880fa0a4fbd36b4bfcb45a3d,
       type: 3}
-    m_Threshold: 0
+    m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -177,7 +177,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 9a00821ed293b5641836c41d47cf5217,
       type: 3}
-    m_Threshold: 1
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -186,7 +186,7 @@ BlendTree:
   m_BlendParameter: left-to-right
   m_BlendParameterY: L_BlendY
   m_MinThreshold: -1
-  m_MaxThreshold: 1
+  m_MaxThreshold: 0.5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -781,7 +781,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 5d12887b880fa0a4fbd36b4bfcb45a3d,
       type: 3}
-    m_Threshold: -1
+    m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -790,7 +790,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 9a00821ed293b5641836c41d47cf5217,
       type: 3}
-    m_Threshold: 1
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -798,8 +798,8 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: left-to-right
   m_BlendParameterY: L_BlendY
-  m_MinThreshold: -1
-  m_MaxThreshold: 1
+  m_MinThreshold: -0.5
+  m_MaxThreshold: 0.5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -1019,7 +1019,7 @@ BlendTree:
   m_Name: Front Run
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 5d12887b880fa0a4fbd36b4bfcb45a3d,
+    m_Motion: {fileID: -203655887218126122, guid: 36071e9c572ffe24b80ebd957e63f0d6,
       type: 3}
     m_Threshold: -1
     m_Position: {x: 0, y: 0}
@@ -1028,9 +1028,9 @@ BlendTree:
     m_DirectBlendParameter: L_BlendY
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 36071e9c572ffe24b80ebd957e63f0d6,
+    m_Motion: {fileID: -203655887218126122, guid: 5d12887b880fa0a4fbd36b4bfcb45a3d,
       type: 3}
-    m_Threshold: 0
+    m_Threshold: -0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1039,7 +1039,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 9a00821ed293b5641836c41d47cf5217,
       type: 3}
-    m_Threshold: 1
+    m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1048,7 +1048,7 @@ BlendTree:
   m_BlendParameter: left-to-right
   m_BlendParameterY: L_BlendY
   m_MinThreshold: -1
-  m_MaxThreshold: 1
+  m_MaxThreshold: 0.5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

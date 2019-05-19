@@ -57,24 +57,25 @@ public class PlayerControllerV2 : MonoBehaviour {
         leftX = Input.GetAxis("Horizontal");
         leftY = Input.GetAxis("Vertical");
 
-        L_ThumbstickVector = new Vector2(leftX, leftY).normalized;
-        R_ThumbstickVector = new Vector2(rightX, rightY).normalized;
+        L_ThumbstickVector = new Vector2(leftX, leftY);
+        R_ThumbstickVector = new Vector2(rightX, rightY);
 
-        var signedThumbstickAngle = -(Vector2.SignedAngle(L_ThumbstickVector, R_ThumbstickVector)/180);
-        var unsignedThumbstickAngle = -(Vector2.Angle(L_ThumbstickVector, R_ThumbstickVector) / 180);
+        var angle = -(Vector2.SignedAngle(R_ThumbstickVector * -1, L_ThumbstickVector * -1)) / 180;
 
-        Debug.Log("Left/Right angle :" + signedThumbstickAngle);
-        //Debug.Log("Front/Back angle :" + unsignedThumbstickAngle);
+        var signedThumbstickAngle = (Vector2.Dot(R_ThumbstickVector, L_ThumbstickVector)); // Left and right values should be 0 when vectors are same or 180 apart
+
+        //Debug.Log("Left/Right angle :" + angle);
+        //Debug.Log("Front/Back angle :" + signedThumbstickAngle);
 
         if (L_ThumbstickVector != Vector2.zero)
         {
             animator.SetBool(ANIM_PARAM_ISMOVINGLEFTSTICK, true);
 
             playerRigidbody.velocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed);
-            playerVelocity = playerRigidbody.velocity.magnitude;
+            playerVelocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed).magnitude;
             animator.SetFloat(ANIM_PARAM_SPEED, playerVelocity);
-            animator.SetFloat(ANIM_PARAM_LEFT_RIGHT, leftX);
-            animator.SetFloat(ANIM_PARAM_FRONT_BACK, unsignedThumbstickAngle);
+            animator.SetFloat(ANIM_PARAM_LEFT_RIGHT, angle);
+            animator.SetFloat(ANIM_PARAM_FRONT_BACK, signedThumbstickAngle);
 
         }
         else

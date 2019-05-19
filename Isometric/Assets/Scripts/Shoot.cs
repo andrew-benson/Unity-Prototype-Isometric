@@ -19,7 +19,6 @@ public class Shoot : MonoBehaviour {
 
         if (fire > 0) 
         {
-            Debug.Log("Fired Bullet");
             GameObject projectile = Instantiate(prefab, prefabOrigin.position, transform.rotation);
         }
         
