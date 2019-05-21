@@ -701,15 +701,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 2d4e2000d4126b94ea11e6c7d89838d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 75.9
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 2d4e2000d4126b94ea11e6c7d89838d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.089999914
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 2d4e2000d4126b94ea11e6c7d89838d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 2d4e2000d4126b94ea11e6c7d89838d0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -814,8 +814,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361400613}
-  m_LocalRotation: {x: 0.29975724, y: 0, z: 0, w: 0.9540155}
-  m_LocalPosition: {x: 0, y: 3.8, z: -5.45}
+  m_LocalRotation: {x: 0.2997572, y: 0, z: 0, w: 0.9540155}
+  m_LocalPosition: {x: 75.9, y: 3.8899994, z: 0.5500002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -987,7 +987,7 @@ Rigidbody:
   m_Mass: 20
   m_Drag: 20
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112

@@ -64,8 +64,8 @@ public class PlayerControllerV2 : MonoBehaviour {
 
         var signedThumbstickAngle = (Vector2.Dot(R_ThumbstickVector, L_ThumbstickVector)); // Left and right values should be 0 when vectors are same or 180 apart
 
-        //Debug.Log("Left/Right angle :" + angle);
-        //Debug.Log("Front/Back angle :" + signedThumbstickAngle);
+        Debug.Log("Left/Right angle :" + angle);
+        Debug.Log("Front/Back angle :" + signedThumbstickAngle);
 
         if (L_ThumbstickVector != Vector2.zero)
         {
