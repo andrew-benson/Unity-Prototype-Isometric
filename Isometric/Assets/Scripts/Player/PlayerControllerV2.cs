@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllerV2 : MonoBehaviour {
     public float PlayerSpeed;
@@ -57,15 +58,15 @@ public class PlayerControllerV2 : MonoBehaviour {
         leftX = Input.GetAxis("Horizontal");
         leftY = Input.GetAxis("Vertical");
 
+        animator.SetFloat("L_BlendY", Math.Abs(leftY));
+        animator.SetFloat("L_BlendX", Math.Abs(leftX));
+
         L_ThumbstickVector = new Vector2(leftX, leftY);
         R_ThumbstickVector = new Vector2(rightX, rightY);
 
-        var angle = -(Vector2.SignedAngle(R_ThumbstickVector * -1, L_ThumbstickVector * -1)) / 180;
-
+        var angle = (Vector2.Dot(R_ThumbstickVector, Vector2.Perpendicular(L_ThumbstickVector)));
         var signedThumbstickAngle = (Vector2.Dot(R_ThumbstickVector, L_ThumbstickVector)); // Left and right values should be 0 when vectors are same or 180 apart
 
-        Debug.Log("Left/Right angle :" + angle);
-        Debug.Log("Front/Back angle :" + signedThumbstickAngle);
 
         if (L_ThumbstickVector != Vector2.zero)
         {

@@ -6,7 +6,8 @@ public class Shoot : MonoBehaviour {
 
     public GameObject prefab;
     public Transform prefabOrigin;
-	// Use this for initialization
+	
+    // Use this for initialization
 	void Start () {
 		
 	}
@@ -16,11 +17,9 @@ public class Shoot : MonoBehaviour {
 
         var fire = Input.GetAxis("Fire");
 
-
         if (fire > 0) 
         {
             GameObject projectile = Instantiate(prefab, prefabOrigin.position, transform.rotation);
         }
-        
-	}
+    }
 }
