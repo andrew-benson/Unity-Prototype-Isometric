@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class LevelGenerator : MonoBehaviour {
+public class LevelGeneratorFromTexture : MonoBehaviour {
 	public Texture2D levelImage;
     public GameObject player;
     public float groundY = 0;
@@ -19,9 +19,9 @@ public class LevelGenerator : MonoBehaviour {
 
     public LevelGeneratorColourMatch[] coloursToGameObjects;
     private Dictionary<Color, GameObject> colourToGameObjectDict = new Dictionary<Color, GameObject>();
-    // Use this for initialization
-    void Awake () {
 
+    private void Start()
+    {
         PopulateDictionary();
 
         var pixelCountWidth = levelImage.width;
@@ -58,6 +58,7 @@ public class LevelGenerator : MonoBehaviour {
 
 
         startTransform.parent = null;
+        
     }
 
     private void PopulateDictionary()
