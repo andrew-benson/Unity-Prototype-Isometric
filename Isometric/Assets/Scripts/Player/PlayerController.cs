@@ -1,26 +1,33 @@
-﻿using System;
+﻿using Assets.Scripts.Constants;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-    public float PlayerSpeed;
-    public static Rigidbody playerRigidbody;
-    public float gravity = -7;
-    public Animator animator;
-    public float leftX, leftY;
-    public float playerVelocity;
 
-    float _sideMovement, _forwardMovement;
-    Vector3 combinedMovementDirection;
+    #region Gameplay Variables
+    public float PlayerSpeed;
+    public float gravity = -7;
+    public float playerVelocity;
+    public float maxNeutralVelocity = 10;
+    public float maxAimVelocity = 8;
+    private Rigidbody playerRigidbody;
+    #endregion
+
+    [Space(10)]
+
+    #region Input Variables 
+    public float leftX;
+    public float leftY;
     public float rightX;
     public float rightY;
     private Vector2 L_ThumbstickVector;
     private Vector2 R_ThumbstickVector;
+    #endregion
 
-    private const string ANIM_PARAM_ISMOVINGLEFTSTICK = "isMovingLeftStick";
-    private const string ANIM_PARAM_ISMOVINGRIGHTSTICK = "isMovingRightStick";
-
+    private Animator animator;
 
     private void Awake()
     {
@@ -28,76 +35,63 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-    // Use this for initialization
-    void Start () {
-        _sideMovement = transform.position.x;
-        _forwardMovement = transform.position.z;
-    }
-
-
     private void FixedUpdate()
     {
         LeftThumbStick();
         RightThumbStick();
-        OnScreenDebug();
 
+        OnScreenDebug();
     }
 
     private void OnScreenDebug()
     {
-        L_ThumbstickVector = new Vector2(leftX, leftY).normalized;
-        R_ThumbstickVector = new Vector2(rightX, rightY).normalized;
-
         Debug.DrawLine(transform.position, transform.position + new Vector3(L_ThumbstickVector.x,0,L_ThumbstickVector.y), Color.cyan);
         Debug.DrawLine(transform.position, transform.position + new Vector3(R_ThumbstickVector.x, 0, R_ThumbstickVector.y), Color.red);
     }
 
     private void LeftThumbStick()
     {
-        leftX = Input.GetAxis("Horizontal");
-        leftY = Input.GetAxis("Vertical");
+        leftX = Input.GetAxis(InputPresets.HORIZONTAL);
+        leftY = Input.GetAxis(InputPresets.VERTICAL);
+        L_ThumbstickVector = new Vector2(leftX, leftY);
 
-        animator.SetFloat("L_BlendY", Math.Abs(leftY));
-        animator.SetFloat("L_BlendX", Math.Abs(leftX));
+        // Get relationship between the thumbsticks to determine sideways movement
+        var dotProduct = (Vector2.Dot(R_ThumbstickVector, Vector2.Perpendicular(L_ThumbstickVector)));
+
+        // Get cross product for back and forth
+        var signedThumbstickAngle = (Vector2.Dot(R_ThumbstickVector, L_ThumbstickVector));
 
         if (L_ThumbstickVector != Vector2.zero)
-        {
-            animator.SetBool(ANIM_PARAM_ISMOVINGLEFTSTICK, true);
-
+        {   
+            // Set velocity of rigid body, which is scaled by player speed
             playerRigidbody.velocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed);
-            playerVelocity = playerRigidbody.velocity.magnitude;
+            playerVelocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed).magnitude;
+
+            animator.SetBool(AnimationParams.ISMOVINGLEFTSTICK, true);
+            animator.SetFloat(AnimationParams.SPEED, playerVelocity);
+            animator.SetFloat(AnimationParams.LEFT_RIGHT, dotProduct);
+            animator.SetFloat(AnimationParams.FRONT_BACK, signedThumbstickAngle);        
         }
         else
-            animator.SetBool(ANIM_PARAM_ISMOVINGLEFTSTICK, false);
+            animator.SetBool(AnimationParams.ISMOVINGLEFTSTICK, false);
 
     }
 
     private void RightThumbStick()
     {
-        rightX = Input.GetAxis("Mouse X");
-        rightY = Input.GetAxis("Mouse Y");
+        rightX = Input.GetAxis(InputPresets.MOUSE_X);
+        rightY = Input.GetAxis(InputPresets.MOUSE_Y);
+        R_ThumbstickVector = new Vector2(rightX, rightY);
 
-        // Look rotation - Right Analogue Stick
-        if (rightX != 0 || rightY != 0)
-        {
-            Vector3 lookDirection = new Vector3(rightX, 0, rightY);
-            if (lookDirection != Vector3.zero)
-                playerRigidbody.MoveRotation(Quaternion.LookRotation(lookDirection));
-        }
-        else
-        {
-            // Use the left stick to create look rotation
-            Vector3 lookDirection = new Vector3(leftX, 0, leftY);
+        var isAiming = R_ThumbstickVector != Vector2.zero;
+        var lookDirection = isAiming ? new Vector3(rightX, 0, rightY) : new Vector3(leftX, 0, leftY);
+        PlayerSpeed = isAiming && lookDirection != Vector3.zero ? maxAimVelocity : maxNeutralVelocity;
 
-            if (lookDirection != Vector3.zero)
-            {
-                playerRigidbody.MoveRotation(Quaternion.LookRotation(lookDirection));
-            }        
-        }
+        // Rotate only when direction isn't zero
+        if(lookDirection != default)
+            playerRigidbody.MoveRotation(Quaternion.LookRotation(lookDirection));
 
-        if(R_ThumbstickVector != Vector2.zero)
-            animator.SetBool(ANIM_PARAM_ISMOVINGRIGHTSTICK, true);
-        else        
-            animator.SetBool(ANIM_PARAM_ISMOVINGRIGHTSTICK, false);       
+        // Enables transition in blend tree
+        animator.SetBool(AnimationParams.ISMOVINGRIGHTSTICK, isAiming);
     }
 }
