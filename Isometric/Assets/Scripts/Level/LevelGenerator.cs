@@ -16,7 +16,9 @@ public class LevelGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GenerateLevel();
-
+    
+        transform.Rotate(new Vector3(0, 45, 0));
+        
         // Update navmesh
         navMeshSurface.BuildNavMesh();
 	}
