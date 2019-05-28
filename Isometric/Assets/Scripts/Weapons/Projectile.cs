@@ -8,15 +8,34 @@ public class Projectile : MonoBehaviour {
     public float speed = 10;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        KillBullet();
+    }
+
+    private void KillBullet()
+    {
         Invoker.Instance.InvokeAction(() =>
         {
-            Destroy(gameObject);
+            try
+            {
+                Destroy(gameObject);            
+            }
+            catch (MissingReferenceException ex)
+            {
+                Debug.Log(ex.Message);
+            }
         }, 2);
     }
-    
+
     // Update is called once per frame
     void Update () {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Bullet Hit Something");
+        Destroy(gameObject);
     }
 }

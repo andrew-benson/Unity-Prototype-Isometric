@@ -67,13 +67,13 @@ public class PlayerController : MonoBehaviour {
             playerRigidbody.velocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed);
             playerVelocity = new Vector3(leftX * PlayerSpeed, playerRigidbody.velocity.y, leftY * PlayerSpeed).magnitude;
 
-            animator.SetBool(AnimationParams.ISMOVINGLEFTSTICK, true);
+            animator.SetBool(AnimationParams.IS_MOVING_LEFTSTICK, true);
             animator.SetFloat(AnimationParams.SPEED, playerVelocity);
             animator.SetFloat(AnimationParams.LEFT_RIGHT, dotProduct);
             animator.SetFloat(AnimationParams.FRONT_BACK, signedThumbstickAngle);        
         }
         else
-            animator.SetBool(AnimationParams.ISMOVINGLEFTSTICK, false);
+            animator.SetBool(AnimationParams.IS_MOVING_LEFTSTICK, false);
 
     }
 
@@ -92,6 +92,6 @@ public class PlayerController : MonoBehaviour {
             playerRigidbody.MoveRotation(Quaternion.LookRotation(lookDirection));
 
         // Enables transition in blend tree
-        animator.SetBool(AnimationParams.ISMOVINGRIGHTSTICK, isAiming);
+        animator.SetBool(AnimationParams.IS_MOVING_RIGHTSTICK, isAiming);
     }
 }

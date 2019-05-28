@@ -35,11 +35,7 @@ public class EnemyNavController : MonoBehaviour
     {
         //MouseClickToFindPlayer();
         if(target)
-        {
-
-            Debug.Log("Remaining: " + agent.remainingDistance);
-            Debug.Log("stoppingDistance: " + agent.stoppingDistance);
-
+        {         
             if (!isReached)
                 agent.SetDestination(target.position);
 
@@ -54,7 +50,7 @@ public class EnemyNavController : MonoBehaviour
 
                 if(!agent.pathPending)
                 {
-                    Debug.Log("Reached Destination");
+                    // Reached Destination so stop
                     isReached = true;
                     agent.isStopped = true;
                 }
