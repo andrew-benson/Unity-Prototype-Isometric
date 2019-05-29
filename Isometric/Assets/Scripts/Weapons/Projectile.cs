@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(gameObject.transform.forward * speed * Time.deltaTime, Space.World);
     }
 
     private void OnCollisionEnter(Collision collision)

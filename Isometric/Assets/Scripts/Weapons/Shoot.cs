@@ -22,7 +22,8 @@ public class Shoot : MonoBehaviour {
 
         if (fire > 0) 
         {
-            GameObject projectile = Instantiate(prefab, prefabOrigin.position, transform.rotation);
+            GameObject projectile = Instantiate(prefab, prefabOrigin.position, prefabOrigin.rotation);
+            //projectile.transform.parent = prefabOrigin.transform;
         }
 
         animator.SetBool(AnimationParams.IS_SHOOTING, fire > 0);
