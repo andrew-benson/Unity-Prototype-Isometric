@@ -42,7 +42,6 @@ public class LevelGenerator : MonoBehaviour {
 					// Spawn the player
 					Vector3 pos = new Vector3(x - width / 2f, 1.25f, y - height / 2f);
 					GameObject playerObj = Instantiate(player, pos, Quaternion.identity);
-                    playerObj.AddComponent<PlayerController>();
 					playerSpawned = true;
 				}
 			}

@@ -804,6 +804,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8ecfc36bcd4f70047975a9073780dcf5, type: 2}
+    - target: {fileID: -4087481368310426503, guid: 85b78435b799c2240a0ebf65eeccff80,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b78435b799c2240a0ebf65eeccff80, type: 3}
 --- !u!1 &968520974 stripped
@@ -943,6 +948,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8ecfc36bcd4f70047975a9073780dcf5, type: 2}
+    - target: {fileID: -4087481368310426503, guid: 85b78435b799c2240a0ebf65eeccff80,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b78435b799c2240a0ebf65eeccff80, type: 3}
 --- !u!1001 &1188555090
@@ -1011,31 +1021,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4397336844390784469, guid: fe238858a14564841a622493a03c6651,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4397336844390784469, guid: fe238858a14564841a622493a03c6651,
-        type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4397336844390784427, guid: fe238858a14564841a622493a03c6651,
-        type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4397336844390784470, guid: fe238858a14564841a622493a03c6651,
-        type: 3}
-      propertyPath: maxAimVelocity
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4397336844390784470, guid: fe238858a14564841a622493a03c6651,
-        type: 3}
-      propertyPath: maxNeutralVelocity
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe238858a14564841a622493a03c6651, type: 3}
